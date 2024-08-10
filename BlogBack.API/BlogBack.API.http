@@ -1,0 +1,6 @@
+@BlogBack.API_HostAddress = http://localhost:5109
+
+GET {{BlogBack.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
