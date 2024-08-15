@@ -1,0 +1,115 @@
+
+ <div class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-auto mb-4">
+
+
+  <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 ">
+    <div class="mx-auto max-w-8xl px-4 lg:px-4 ">
+        <!-- Start coding here -->
+        <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+
+                <div class="  w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0 ">
+                    <button type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                      <a class="btn btn-primary" routerLink="/posts/create">پست جدید</a>
+                    </button>
+                </div>
+
+
+
+                <div class="inline-flex rounded-md shadow-sm" role="group">
+                    <button (click)="showAll()"   type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-s-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                      تمام پستها
+                    </button>
+                    <button (click)="showActive()" type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border-t border-b border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                      فعال ها
+                    </button>
+                    <button (click)="showNOActive()" type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+                      غیر فعال
+                    </button>
+                  </div>
+                  
+
+
+
+
+
+            </div>
+            <div class="overflow-x-auto ">
+                <table   class="w-full text-sm ltr:text-left rtl:text-right   text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr >
+                            <th scope="col" class="px-4 py-3 ml-2 ltr:ml-3  "></th>
+                            <th scope="col" class="px-4 py-3 ltr:ml-3  ">عنوان</th>
+                            <th scope="col" class="px-4 py-3 ltr:ml-3  ">دسته بندی</th>
+                            <th scope="col" class="px-4 py-3 ltr:ml-3  ">شرح</th>
+                            <th scope="col" class="px-4 py-3 ltr:ml-3  ">برچسب</th>
+
+                            <th scope="col" class="px-4 py-3">
+                                <span class="sr-only">Actions</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of allPosts let i=index" class="border-b dark:border-gray-700">
+                            <th scope="row"  class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ i + 1 }}</th>
+                            <td class="px-4 py-3 ltr:ml-3 rtl:mr-3">{{ item.title }}</td>
+                            <td class="px-4 py-3 ltr:ml-3 rtl:mr-3">{{ item.categoryTitle }}</td>
+                            <td class=" px-4 py-3 ltr:ml-3 rtl:mr-3"  >
+                              <p  class="overflow-hidden truncate w-2"      style="display:inline-block;height:3ch; width:40ch; overflow: hidden;white-space: nowrap; text-overflow: ellipsis;" [innerHTML]=" item.description" ></p>
+
+                              
+                            </td>
+                            
+                            <td    class="px-4 py-3 ltr:ml-3 rtl:mr-3  ">
+                                    <button *ngFor="let i of item.labels" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xs font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                                        <span class="relative px-1 py-0.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                            {{i.labelName + " "}}
+                                        </span>
+                                        </button>
+                            </td>
+
+
+
+
+                            <td class="px-4 py-3 flex items-center justify-end">
+
+                              <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2  me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                <a class="btn btn-primary" [routerLink]="['/pages/post', item.postId]">نمایش</a>
+                              </button>
+
+                            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2  me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                              <a class="btn btn-primary" [routerLink]="['/posts/edit', item.postId]">ویرایش</a>
+                            </button>
+
+                            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2  me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                              <button type="button" (click)="deleteItem(item.postId)">حذف</button>
+                            </button>
+
+
+
+                            <ng-container *ngIf="item.active; else elseactive ">
+                                <label class="inline-flex items-center cursor-pointer">
+                                    <input (click)="activeItem(item)"  type="checkbox"   value="" class="sr-only peer"   checked>
+                                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                </label>
+                          </ng-container>
+                          <ng-template #elseactive>
+                                <label class="inline-flex items-center cursor-pointer">
+                                    <input (click)="activeItem(item)"  type="checkbox"   value="" class="sr-only peer" >
+                                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                </label>
+                           </ng-template>
+                             </td>
+                        </tr>
+                         
+                    </tbody>
+                </table>
+            </div>
+ 
+        </div>
+    </div>
+    </section>
+
+</div>    
+
+
