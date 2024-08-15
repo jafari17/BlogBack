@@ -10,12 +10,13 @@ namespace BlogBack.Application.Services_.Post_.Commands.Create
 {
     public class CreatePostCommand : IRequest<bool>
     {
-        public string Title { get; set; }
-        public int CategoryId { get; set; }
-         public string Description { get; set; }
-        public bool? Active { get; set; }
+        public PostDto PostDto { get; set; }
+        //public string Title { get; set; }
+        //public int CategoryId { get; set; }
+        // public string Description { get; set; }
+        //public bool? Active { get; set; }
 
-        public string LabelName { get; set; }
+        //public string LabelName { get; set; }
 
 
 

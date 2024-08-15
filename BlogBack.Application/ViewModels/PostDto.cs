@@ -13,12 +13,13 @@ namespace BlogBack.Application.ViewModels
     {
         public int PostId { get; set; }
         public string Title { get; set; }
-        public int CategoryId { get; set; }
 
-        public ICollection<LabelDto> Labels { get; set; }
-        public string Description { get; set; }
+        public ICollection<LabelDto>? Labels { get; set; }
+        public string? Description { get; set; }
         public bool? Active { get; set; }
-        public string CategoryTitle { get; set; }
+        //public int CategoryId { get; set; }
+
+        public string? CategoryTitle { get; set; }
     }
 
 

@@ -20,13 +20,13 @@ namespace BlogBack.Infrastructure
 
             services.AddDbContext<BlogBackDbContexts>(option =>
             {
-                option.UseSqlite("Data Source=DB/BlogBackDb.db");
+                option.UseSqlite("Data Source=BlogBackDb.db");
 
             }, ServiceLifetime.Scoped);
 
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<ILabelRepository, LabelRepository>();
+            //services.AddScoped<ILabelRepository, LabelRepository>();
 
 
 

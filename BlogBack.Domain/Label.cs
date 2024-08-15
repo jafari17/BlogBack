@@ -8,10 +8,8 @@ namespace BlogBack.Domain
 {
     public class Label
     {
-        public int LabelId { get; set; }
-        public string LabelName { get; set; }
-
-        public int PostId { get; set; }
-        public Post Post { get; set; }
+         public string LabelName { get; set; } 
+         public int PostId { get; set; }
+         public Post Post { get; set; }
     }
 }

@@ -22,10 +22,7 @@ namespace BlogBack.Application.Services_.Post_.Queries.GetPost
 
         public async Task<IEnumerable<PostDto>> Handle(GetPostQuery request, CancellationToken cancellationToken)
         {
-            var ListPost = await _postRepository.GetListPostAsync();
-
-             
-
+            var ListPost = await _postRepository.GetListPostAsync(); 
             var ListPostDto = _mapper.Map<List<PostDto>>(ListPost);
 
             return ListPostDto;

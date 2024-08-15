@@ -39,19 +39,29 @@ namespace BlogBack.Infrastructure.DbContexts
             modelBuilder.Entity<Post>().HasKey(t => t.PostId);
 
             modelBuilder.Entity<Category>().HasKey(t => t.CategoryId);
-            modelBuilder.Entity<Label>().HasKey(t => t.LabelId);
+            //modelBuilder.Entity<Label>().HasKey(t => t.LabelId);
 
 
 
-            modelBuilder.Entity<Category>()
-                .HasMany(c => c.posts)
-                .WithOne(p => p.Category)
-                .HasForeignKey(p => p.CategoryId);
+            //modelBuilder.Entity<Category>()
+            //    .HasMany(c => c.posts)
+            //    .WithOne(p => p.Category)
+            //    .HasForeignKey(p => p.CategoryId);
 
             modelBuilder.Entity<Post>()
                 .HasMany(c => c.Labels)
                 .WithOne(p => p.Post)
                 .HasForeignKey(p => p.PostId);
+
+
+            modelBuilder.Entity<Label>(entity =>
+            {
+                entity.HasKey(e => new { e.PostId, e.LabelName });  
+            });
+
+
+
+
         }
     }
 }

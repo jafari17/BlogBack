@@ -1,6 +1,8 @@
 using BlogBack.Infrastructure;
 using BlogBack.Application;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using BlogBack.Infrastructure.DbContexts;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,8 +26,8 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy.AllowAnyOrigin()
-                   .AllowAnyMethod()
-                   .AllowAnyHeader();
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
         });
 });
 
@@ -34,6 +36,7 @@ builder.Services.AddCors(options =>
 
 
 var app = builder.Build();
+Migrate(app);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -51,3 +54,13 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+static void Migrate(WebApplication app)
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        var context = services.GetRequiredService<BlogBackDbContexts>();
+        context.Database.Migrate();
+    }
+}

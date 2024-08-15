@@ -18,6 +18,6 @@ namespace BlogBack.Application.ViewModels
         //public int PostId { get; set; }
         //public PostDto Post { get; set; }
 
-        public ICollection<PostDto> posts { get; set; }
+        //public ICollection<PostDto> posts { get; set; }
     }
 }

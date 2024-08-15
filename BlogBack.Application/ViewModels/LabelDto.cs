@@ -9,10 +9,8 @@ namespace BlogBack.Application.ViewModels
 {
     public class LabelDto
     {
-        public int LabelId { get; set; }
-        public string LabelName { get; set; }
+         public string LabelName { get; set; }
 
-        public int PostId { get; set; }
-        public Post Post { get; set; }
+         public int PostId { get; set; }
     }
 }

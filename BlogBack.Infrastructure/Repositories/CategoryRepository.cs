@@ -27,9 +27,15 @@ namespace BlogBack.Infrastructure.Repositories
             return _context.Category.First(x => x.CategoryId == id);
         }
 
+        public  async Task DeleteByIdAsync(int id)
+        {
+            var category = await CategoryByIdAsync(id);
+             _context.Category.Remove(category);
+        }
+
         public async Task<IEnumerable<Category>> GetListCategoryAsync()
         {
-            return await _context.Category.Include(x => x.posts).ToListAsync();
+            return await _context.Category.ToListAsync();
         }
 
         public void RemoveAllCategory()

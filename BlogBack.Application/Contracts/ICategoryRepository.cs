@@ -15,6 +15,8 @@ namespace BlogBack.Application.Contracts
         Task AddCategoryAsync(Category category);
 
         Task<Category> CategoryByIdAsync(int id);
+        Task DeleteByIdAsync(int id);
+
         void RemoveAllCategory();
         Task SaveChangesAsync();
     }

@@ -10,9 +10,12 @@ namespace BlogBack.Application.Contracts
     public interface IPostRepository
     {
         Task<IEnumerable<Post>> GetListPostAsync();
-        Task<Post> PostByIdAsync(int id);
+        Task<Post> GetPostByIdAsync(int id);
 
         Task AddPostAsync(Post post);
+        Task UpdatePostAsync(Post post);
+        Task DeletePostByIdAsync(int id);
+
         void removeAllPost();
         Task SaveChangesAsync();
     }

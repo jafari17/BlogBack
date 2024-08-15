@@ -12,6 +12,6 @@ namespace BlogBack.Domain
         public string TitleCategory { get; set; }
         public string DescriptionCategory { get; set; }
 
-         public ICollection<Post> posts { get; }
+         //public ICollection<Post> posts { get; }
     }
 }

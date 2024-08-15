@@ -38,20 +38,13 @@ namespace BlogBack.Infrastructure.Migrations
 
             modelBuilder.Entity("BlogBack.Domain.Label", b =>
                 {
-                    b.Property<int>("LabelId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("LabelName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("PostId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("LabelId");
+                    b.Property<string>("LabelName")
+                        .HasColumnType("TEXT");
 
-                    b.HasIndex("PostId");
+                    b.HasKey("PostId", "LabelName");
 
                     b.ToTable("Label");
                 });
@@ -65,8 +58,8 @@ namespace BlogBack.Infrastructure.Migrations
                     b.Property<bool?>("Active")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("CategoryTitle")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -77,8 +70,6 @@ namespace BlogBack.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("PostId");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Post");
                 });
@@ -92,22 +83,6 @@ namespace BlogBack.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Post");
-                });
-
-            modelBuilder.Entity("BlogBack.Domain.Post", b =>
-                {
-                    b.HasOne("BlogBack.Domain.Category", "Category")
-                        .WithMany("posts")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("BlogBack.Domain.Category", b =>
-                {
-                    b.Navigation("posts");
                 });
 
             modelBuilder.Entity("BlogBack.Domain.Post", b =>

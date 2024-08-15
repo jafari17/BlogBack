@@ -16,16 +16,15 @@ namespace BlogBack.Application.Services_.Post_.Commands.Create
         private readonly IMapper _mapper;
         private readonly IPostRepository _postRepository;
         private readonly ICategoryRepository _categoryRepository;
-        private readonly ILabelRepository _labelRepository;
+        //private readonly ILabelRepository _labelRepository;
 
 
 
-        public CreatePostCommandHandler( IMapper mapper, IPostRepository candlestickRepository, ICategoryRepository categoryRepository, ILabelRepository labelRepository)
+        public CreatePostCommandHandler( IMapper mapper, IPostRepository candlestickRepository, ICategoryRepository categoryRepository)
         {
             _mapper = mapper;
             _postRepository = candlestickRepository;
             _categoryRepository = categoryRepository;
-            _labelRepository = labelRepository;
 
         }
         public async Task<bool> Handle(CreatePostCommand request, CancellationToken cancellationToken)
@@ -39,19 +38,19 @@ namespace BlogBack.Application.Services_.Post_.Commands.Create
             //await _labelRepository.AddLabelAsync(label);
 
 
-            var category = await _categoryRepository.CategoryByIdAsync(request.CategoryId);
-            var categoryDto = _mapper.Map<CategoryDto>(category);
+            //var category = await _categoryRepository.CategoryByIdAsync(request.PostDto.CategoryId);
+            //var categoryDto = _mapper.Map<CategoryDto>(category);
 
-            PostDto postdto = new PostDto()
-            {
-                Title = request.Title,
-                Description = request.Description,
-                Active = request.Active,
+            //PostDto postdto = new PostDto()
+            //{
+            //    Title = request.Title,
+            //    Description = request.Description,
+            //    Active = request.Active,
 
-                CategoryId =  request.CategoryId,
-            };
+            //    //CategoryId =  request.CategoryId,
+            //};
 
-            var Post = _mapper.Map<Post>(postdto);
+            var Post = _mapper.Map<Post>(request.PostDto);
             await _postRepository.AddPostAsync(Post);
             await _postRepository.SaveChangesAsync();
             return await Task.FromResult(true);
