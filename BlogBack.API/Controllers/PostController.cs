@@ -2,17 +2,20 @@
  using BlogBack.Application.Services_.Post_.Commands.Create;
 using BlogBack.Application.Services_.Post_.Commands.Delete;
 using BlogBack.Application.Services_.Post_.Commands.Update;
+using BlogBack.Application.Services_.Post_.Queries.GetListPostByUserId;
 using BlogBack.Application.Services_.Post_.Queries.GetPost;
 using BlogBack.Application.Services_.Post_.Queries.GetPostById;
 using BlogBack.Application.ViewModels;
 using BlogBack.Domain;
 using BlogBack.Infrastructure.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace BlogBack.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]/[action]")]
     public class PostController : Controller
@@ -33,28 +36,7 @@ namespace BlogBack.API.Controllers
             {
                 PostDto = postdto,
             };
-            var response = await _mediator.Send(command);
-
-
-            //var post = new Post 
-            //{
-            //    Title = "سمند",
-            //    CategoryId = 1,
-            //    Active = false,
-            //    Labels = new List<Label >
-            //        {
-            //            new Label  { LabelName = "لیبل یک" },
-            //            new Label  { LabelName = "لیبل دو" },
-            //            new Label  { LabelName = "لیبل سه" }
-            //        },
-            //    Description = "ماشین ایرانی"
-            //};
-
-            ////await  _postRepository.AddPostAsync(post); 
-
-            //await _postRepository.SaveChangesAsync(); 
-
-
+            var response = await _mediator.Send(command); 
             return Ok();
         }
 
@@ -70,21 +52,28 @@ namespace BlogBack.API.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetPostById(int id)
-        
         {
             var query = new GetPostByIdQuery() { PostId = id };
             var response = await _mediator.Send(query);
             return Ok(response);
         }
-          
+
+        [HttpGet]
+        public async Task<IActionResult> GetListPostByUserIdAsync(string id)
+        {
+            var query = new GetListPostByUserIdQuery() { UserId = id };
+            var response = await _mediator.Send(query);
+            return Ok(response);
+        }
+
         [HttpDelete]
         public async Task<IActionResult> DeletePost(int id)
         {
             var command = new DeletePostCommand() { PostId = id };
             var response = await _mediator.Send(command);
             return Ok();
-
         }
+
         [HttpPut]
         public async Task<IActionResult> UpdatePost(PostDto postdto)
         {
@@ -92,8 +81,7 @@ namespace BlogBack.API.Controllers
             {
                 PostDto = postdto,
             };
-            var response = await _mediator.Send(command);
-
+            var response = await _mediator.Send(command); 
             return Ok();
         }
 

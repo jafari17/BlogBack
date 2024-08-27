@@ -10,6 +10,7 @@ namespace BlogBack.Application.Contracts
     public interface IPostRepository
     {
         Task<IEnumerable<Post>> GetListPostAsync();
+        Task<IEnumerable<Post>> GetListPostByUserIdAsync(string userId);
         Task<Post> GetPostByIdAsync(int id);
 
         Task AddPostAsync(Post post);

@@ -6,6 +6,8 @@ import { homeCategoriesComponent } from '../categories/home-categories/home-cate
 import { CategoryPagesComponent } from './category-pages/category-pages.component';
 import { LabelPagesComponent } from './label-pages/label-pages.component';
 import { LayoutPagesComponent } from './layout-pages/layout-pages.component';
+import { LoginComponent } from '../users/login/login.component';
+import { RegisterComponent } from '../users/register/register.component';
 
 const routes: Routes = [
   {
@@ -29,8 +31,16 @@ const routes: Routes = [
         component: LabelPagesComponent
       }
     ]
+    
   },
- 
+  {
+    path: 'auth/login',
+    component: LoginComponent,
+  },
+  {
+    path: 'auth/register',
+    component: RegisterComponent,
+  },
 ];
 
 @NgModule({

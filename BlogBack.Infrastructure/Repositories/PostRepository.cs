@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,12 +32,14 @@ namespace BlogBack.Infrastructure.Repositories
 
         public async Task<IEnumerable<Post>> GetListPostAsync()
         {
-            var c = await _context.Post.Include(l => l.Labels).ToListAsync();
+            var c = await _context.Post.Include(l => l.Labels).ToListAsync(); 
+            return c; 
+        }
 
-            return c;
-
-
- 
+        public async Task<IEnumerable<Post>> GetListPostByUserIdAsync(string userId)
+        {
+           var x = await _context.Post.Include(l => l.Labels).Where(u => u.UserId == userId).ToListAsync();
+            return x;
         }
 
         public async Task<Post> GetPostByIdAsync(int id)
@@ -55,11 +58,7 @@ namespace BlogBack.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        //public async Task UpdatePostAsync(Post post)
-        //{
  
-        //    _context.Entry(post).State = EntityState.Modified;
-        //}
 
         public async Task UpdatePostAsync(Post post)
         {
@@ -80,9 +79,46 @@ namespace BlogBack.Infrastructure.Repositories
             //    _context.Entry(label).State = EntityState.Deleted;
             //}
 
+            //_context.Post.UpdateRange(post);
+
+            //var p =  await GetPostByIdAsync(post.PostId);
+
+            //foreach (var item in post.Labels )
+            //{
+            //    _context.Post
+            //}
+
+
+            ////_context.Post.UpdateRange(post);
+            //_context.Entry(post).State = EntityState.Modified;
+
+
+
+            var x = post.Labels.ToList();
+
+
+
+            var listLabel =  _context.Label.Where(z => z.PostId == post.PostId).ToList();
+            foreach (var label in listLabel)
+            {
+                _context.Label.Remove(label);
+            }
+
+
+
+            // Add new labels
+            foreach (var label  in x)
+            {
+                _context.Label.Add(label);
+            }
+
             _context.Entry(post).State = EntityState.Modified;
 
-         }
+ 
+
+             
+
+        }
 
     }
 }

@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import {  Component,OnInit } from '@angular/core';
 import { Posts } from '../posts';
 import { PostsService } from '../posts.service';
  
@@ -13,13 +13,15 @@ export class HomeComponent implements OnInit {
    constructor(private postService: PostsService) {}
  
   ngOnInit(): void {
-    this.getPosts();
+    const authUserId = localStorage.getItem('authUserId');
+    if(authUserId){ this.getPostsbyUser(authUserId);}
+
     console.log(this.allPosts)
   }
- 
-  getPosts() {
+   
+  getPostsbyUser(id: string) {
     console.log("getPosts()")
-    this.postService.get().subscribe((data) => {
+    this.postService.getListPostByUserId(id).subscribe((data) => {
       
       this.allPosts = data;
       this.allPostsSave = data;
@@ -41,6 +43,7 @@ export class HomeComponent implements OnInit {
       },
     });
 }
+
 
 activeItem(post:Posts) {
   console.log(post.active)

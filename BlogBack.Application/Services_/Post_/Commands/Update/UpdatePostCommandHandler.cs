@@ -19,8 +19,6 @@ namespace BlogBack.Application.Services_.Post_.Commands.Update
         private readonly ICategoryRepository _categoryRepository;
         //private readonly ILabelRepository _labelRepository;
 
-
-
         public UpdatePostCommandHandler(IMapper mapper, IPostRepository candlestickRepository, ICategoryRepository categoryRepository)
         {
             _mapper = mapper;

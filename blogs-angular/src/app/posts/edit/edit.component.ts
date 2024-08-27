@@ -19,6 +19,7 @@ export class EditComponent implements OnInit {
     description: '',
     labels: [],
     categoryId:0,
+    userId:''
 
   };
   labels: Labels = {

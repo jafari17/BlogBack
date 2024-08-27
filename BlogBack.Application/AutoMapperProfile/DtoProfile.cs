@@ -29,9 +29,9 @@ namespace BlogBack.Application.AutoMapperProfile
 
             CreateMap<LabelDto, LabelDto>();
             CreateMap<Label , LabelDto>();
-            CreateMap<LabelDto, Label >();
+            CreateMap<LabelDto, Label>();
+            //.ForMember(dest => dest.LabelName, opt => opt.MapFrom(src => src.LabelName));
 
- 
         }
     }
 }

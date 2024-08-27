@@ -11,7 +11,7 @@ namespace BlogBack.Application.ViewModels
     {
         public int CategoryId { get; set; }
         public string TitleCategory { get; set; }
-        public string DescriptionCategory { get; set; }
+        public string? DescriptionCategory { get; set; }
 
 
 

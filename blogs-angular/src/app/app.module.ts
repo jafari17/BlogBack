@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PostsModule } from './posts/posts.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
 import { SideComponent } from './side/side.component';
 import { CategoriesModule } from './categories/categories.module';
@@ -15,11 +15,12 @@ import { PagesModule } from './pages/pages.module';
 import { FormsModule } from '@angular/forms';
 import { QuillModule } from "ngx-quill";
 import { DashboardModule } from './dashboard/dashboard.module';
+import { LoginComponent } from './users/login/login.component';
+import { AuthInterceptor } from './users/auth.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-
      
   ],
   imports: [
@@ -39,7 +40,14 @@ import { DashboardModule } from './dashboard/dashboard.module';
       }]
    })
    ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

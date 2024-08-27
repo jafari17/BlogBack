@@ -1,4 +1,6 @@
 ﻿using BlogBack.Domain;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
  
 namespace BlogBack.Infrastructure.DbContexts
 {
-    public class BlogBackDbContexts : DbContext
+    public class BlogBackDbContexts : IdentityDbContext
     {
         public BlogBackDbContexts()
         {
@@ -31,6 +33,10 @@ namespace BlogBack.Infrastructure.DbContexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
+
+            base.OnModelCreating(modelBuilder);
+
             ConfigPost(modelBuilder);
         }
 
@@ -39,7 +45,9 @@ namespace BlogBack.Infrastructure.DbContexts
             modelBuilder.Entity<Post>().HasKey(t => t.PostId);
 
             modelBuilder.Entity<Category>().HasKey(t => t.CategoryId);
-            //modelBuilder.Entity<Label>().HasKey(t => t.LabelId);
+
+            modelBuilder.Entity<Label>().HasKey(t => t.LabelId);
+
 
 
 
@@ -54,10 +62,10 @@ namespace BlogBack.Infrastructure.DbContexts
                 .HasForeignKey(p => p.PostId);
 
 
-            modelBuilder.Entity<Label>(entity =>
-            {
-                entity.HasKey(e => new { e.PostId, e.LabelName });  
-            });
+            //modelBuilder.Entity<Label>(entity =>
+            //{
+            //    entity.HasKey(e => new { e.PostId, e.LabelName });
+            //});
 
 
 

@@ -10,7 +10,7 @@ namespace BlogBack.Domain
     {
         public int CategoryId { get; set; }
         public string TitleCategory { get; set; }
-        public string DescriptionCategory { get; set; }
+        public string? DescriptionCategory { get; set; }
 
          //public ICollection<Post> posts { get; }
     }

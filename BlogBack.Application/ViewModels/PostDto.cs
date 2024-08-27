@@ -13,6 +13,7 @@ namespace BlogBack.Application.ViewModels
     {
         public int PostId { get; set; }
         public string Title { get; set; }
+        public string? UserId { get; set; }
 
         public ICollection<LabelDto>? Labels { get; set; }
         public string? Description { get; set; }

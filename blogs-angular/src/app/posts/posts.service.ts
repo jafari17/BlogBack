@@ -19,7 +19,9 @@ export class PostsService {
   getById(id: number) {
     return this.http.get<Posts>(`https://localhost:8081/api/Post/GetPostById?id=${id}`);
   }
-    
+  getListPostByUserId(id: string) {
+    return this.http.get<Posts[]>(`https://localhost:8081/api/Post/GetListPostByUserId?id=${id}`);
+  }
   update(payload:Posts){
     return this.http.put(`https://localhost:8081/api/Post/UpdatePost/`,payload);
   }

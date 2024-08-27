@@ -24,6 +24,8 @@ export class CreateComponent implements OnInit {
     labels: [],
     active:true,
     categoryId:0,
+    userId:''
+
   };
   public labels: Labels = {
     labelName: '',
@@ -70,6 +72,10 @@ export class CreateComponent implements OnInit {
      this.postForm.labels?.push( this.labels)
        console.log(this.postForm.labels )
 
+    }
+    const authUserId = localStorage.getItem('authUserId');
+    if(authUserId){
+      this.postForm.userId = authUserId
     }
 
     console.log("this.postForm" )

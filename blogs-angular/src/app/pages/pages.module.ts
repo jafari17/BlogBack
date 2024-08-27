@@ -9,6 +9,9 @@ import { CategoryPagesComponent } from './category-pages/category-pages.componen
 import { LayoutPagesComponent } from './layout-pages/layout-pages.component';
 import { NavPagesComponent } from './nav-pages/nav-pages.component';
 import { FooterPagesComponent } from './footer-pages/footer-pages.component';
+import { LoginComponent } from '../users/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from '../users/register/register.component';
  
 
 @NgModule({
@@ -19,11 +22,16 @@ import { FooterPagesComponent } from './footer-pages/footer-pages.component';
     CategoryPagesComponent,
     LayoutPagesComponent,
     NavPagesComponent,
-    FooterPagesComponent
+    FooterPagesComponent,
+    LoginComponent,
+    RegisterComponent
+
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
  
   ]
 })

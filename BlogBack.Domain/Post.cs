@@ -11,8 +11,10 @@ namespace BlogBack.Domain
     public class Post
     { 
         public int PostId { get; set; }
+        public string? UserId { get; set; }
+
         public string Title { get; set; }
-         public ICollection<Label> Labels { get; set; }
+         public virtual ICollection<Label> Labels { get; set; }
 
         public string Description { get; set; }
         public bool? Active { get; set; }

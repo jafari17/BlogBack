@@ -5,10 +5,12 @@ using BlogBack.Application.Services_.Post_.Commands.Create;
 using BlogBack.Application.Services_.Post_.Queries.GetPost;
 using BlogBack.Application.ViewModels;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogBack.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]/[action]")]
     public class CategoryController : Controller
@@ -22,7 +24,7 @@ namespace BlogBack.API.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> AddCategory(string TitleCategory, string DescriptionCategory )
+        public async Task<IActionResult> AddCategory(string TitleCategory, string? DescriptionCategory )
         {
             CategoryDto categoryDto = new CategoryDto()
             {
@@ -34,29 +36,26 @@ namespace BlogBack.API.Controllers
             {
                 categoryDto = categoryDto
             };
-
             var response = await _mediator.Send(command);
-            return Ok( );
+            return Ok();
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var command = new DeleteCategoryCommand() { CategoryId = id };
-
             var response = await _mediator.Send(command);
             return Ok();
-
         }
 
 
          [HttpGet]
         public async Task<IActionResult> GetCategory()
         {
-
             var query = new GetCategoryQuery() { };
             var response = await _mediator.Send(query);
             return Ok(response);
         }
+
     }
 }

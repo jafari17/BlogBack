@@ -3,6 +3,7 @@ using BlogBack.Application;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using BlogBack.Infrastructure.DbContexts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,10 +15,17 @@ builder.Services
 
 builder.Services.AddControllers();
 //// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-//builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //builder.Services.AddSingleton<ITempDataDictionaryFactory, TempDataDictionaryFactory>();
+
+
+builder.Services.AddAuthorization();
+
+builder.Services.AddIdentityApiEndpoints<IdentityUser >()
+    .AddEntityFrameworkStores<BlogBackDbContexts>();
+
 
 
 builder.Services.AddCors(options =>
@@ -36,7 +44,7 @@ builder.Services.AddCors(options =>
 
 
 var app = builder.Build();
-Migrate(app);
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -44,6 +52,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.MapIdentityApi<IdentityUser>();
 
 app.UseHttpsRedirection();
 
@@ -52,6 +61,8 @@ app.UseCors();
 app.UseAuthorization();
 
 app.MapControllers();
+
+Migrate(app);
 
 app.Run();
 

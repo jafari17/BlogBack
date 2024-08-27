@@ -21,20 +21,20 @@ export class HomePagesComponent implements OnInit  {
    ) {}
  
    ngOnInit(): void {
-    this.getPosts();
-    console.log(this.allPosts)
+    const authUserId = localStorage.getItem('authUserId');
+    if(authUserId){this.getPosts(authUserId);}
+     console.log(this.allPosts)
   }
    
-  getPosts() {
+  getPosts(id: string) {
     console.log("getPosts()")
-    this.postService.get().subscribe((data) => {
+    this.postService.getByCategory(id).subscribe((data) => {
       
       this.allPosts = data;
       this.allPostsSave = data;
 
      });
-  }
-
+  } 
 }
 
 

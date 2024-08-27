@@ -1,4 +1,5 @@
-﻿using BlogBack.Application.ViewModels;
+﻿using BlogBack.Application.Services_.Post_.Queries.GetPost;
+using BlogBack.Application.ViewModels;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -12,3 +13,4 @@ namespace BlogBack.Application.Services_.Post_.Queries.GetPost
     {
     }
 }
+ 

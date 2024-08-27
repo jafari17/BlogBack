@@ -19,6 +19,8 @@ export class LabelPagesComponent implements OnInit  {
     description: '',
     labels: [],
     categoryId:0,
+    userId:''
+
 
   };
 

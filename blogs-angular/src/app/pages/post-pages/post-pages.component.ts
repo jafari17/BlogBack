@@ -16,6 +16,7 @@ export class PostPagesComponent implements OnInit   {
     description: '',
     labels: [],
     categoryId:0,
+    userId:''
 
   };
  

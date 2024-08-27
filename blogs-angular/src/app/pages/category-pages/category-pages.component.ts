@@ -19,6 +19,8 @@ export class CategoryPagesComponent implements OnInit  {
     description: '',
     labels: [],
     categoryId:0,
+    userId:''
+
 
   };
 
