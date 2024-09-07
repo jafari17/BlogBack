@@ -42,6 +42,16 @@ namespace BlogBack.Infrastructure.Repositories
             return x;
         }
 
+        public Task<IEnumerable<Post>> GetListPostDirectorytAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<string>> GetListUrlImageByPostDirectoryAsync(string postDirectory)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Post> GetPostByIdAsync(int id)
         {
             return _context.Post.Include(l => l.Labels).First(x => x.PostId == id);

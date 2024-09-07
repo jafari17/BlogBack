@@ -14,6 +14,7 @@ export class LabelPagesComponent implements OnInit  {
 
   public postForm: Posts = {
     postId: 0,
+    postDirectory:'',
     title: '',
     categoryTitle: '',
     description: '',

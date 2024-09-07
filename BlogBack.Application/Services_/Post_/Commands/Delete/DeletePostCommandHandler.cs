@@ -2,6 +2,7 @@
 using BlogBack.Application.Contracts;
 using BlogBack.Application.Services_.Post_.Commands.Create;
 using BlogBack.Application.ViewModels;
+using BlogBack.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace BlogBack.Application.Services_.Post_.Commands.Delete
 {
-    internal class DeletePostCommandHandler : IRequestHandler<DeletePostCommand, bool>
+    internal class DeletePostCommandHandler : IRequestHandler<DeletePostCommand, string>
     {
         private readonly IMapper _mapper;
         private readonly IPostRepository _postRepository;
@@ -20,20 +21,30 @@ namespace BlogBack.Application.Services_.Post_.Commands.Delete
 
 
 
-        public DeletePostCommandHandler(IMapper mapper, IPostRepository candlestickRepository)
+        public DeletePostCommandHandler(IMapper mapper, IPostRepository candlestickRepository )
         {
             _mapper = mapper;
             _postRepository = candlestickRepository;
  
         }
-        public async Task<bool> Handle(DeletePostCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(DeletePostCommand request, CancellationToken cancellationToken)
         {
- 
+            try
+            {
+                var post = await _postRepository.GetPostByIdAsync(request.PostId);
 
-            //var Post = _mapper.Map<Post>(request.PostDto);
-            await _postRepository.DeletePostByIdAsync(request.PostId);
-            await _postRepository.SaveChangesAsync();
-            return await Task.FromResult(true);
+                await _postRepository.DeletePostByIdAsync(request.PostId);
+                await _postRepository.SaveChangesAsync();
+                return await Task.FromResult(post.PostDirectory);
+            }
+            catch (Exception)
+            {
+                return await Task.FromResult(string.Empty);
+                throw;
+            }
+
+
+            
         }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BlogBack.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class @int : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -74,7 +74,8 @@ namespace BlogBack.Infrastructure.Migrations
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     Active = table.Column<bool>(type: "INTEGER", nullable: true),
-                    CategoryTitle = table.Column<string>(type: "TEXT", nullable: true)
+                    CategoryTitle = table.Column<string>(type: "TEXT", nullable: true),
+                    PostDirectory = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

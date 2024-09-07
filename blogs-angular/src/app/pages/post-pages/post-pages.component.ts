@@ -11,6 +11,7 @@ import { PostsService } from 'src/app/posts/posts.service';
 export class PostPagesComponent implements OnInit   {
   public postForm: Posts = {
     postId: 0,
+    postDirectory:'',
     title: '',
     categoryTitle: '',
     description: '',

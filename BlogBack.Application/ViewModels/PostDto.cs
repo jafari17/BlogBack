@@ -21,6 +21,8 @@ namespace BlogBack.Application.ViewModels
         //public int CategoryId { get; set; }
 
         public string? CategoryTitle { get; set; }
+        public string PostDirectory { get; set; }
+
     }
 
 

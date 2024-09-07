@@ -13,7 +13,8 @@ import { CategoriesService } from 'src/app/categories/categories.service';
 })
 export class EditComponent implements OnInit {
  public postForm: Posts = {
-    postId: 0,
+  postId: 0,
+  postDirectory:'',
     title: '',
     categoryTitle: '',
     description: '',
@@ -91,8 +92,6 @@ export class EditComponent implements OnInit {
        console.log(this.postForm.labels )
 
     }
-
-
 
     this.postService.update(this.postForm)
     .subscribe({

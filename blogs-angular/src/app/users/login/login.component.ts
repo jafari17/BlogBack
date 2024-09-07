@@ -18,18 +18,11 @@ export class LoginComponent implements OnInit   {
     private router:Router,
   ) {}
 
-  
- 
-
-
   ngOnInit(): void {
 
     this.checkingLogin()
       
     }
- 
- 
-
   login(user: UserRegister) {
 
     var userLogin = new UserLogin();
@@ -66,9 +59,6 @@ export class LoginComponent implements OnInit   {
     });
  
   }
-
-   
-
 
   getUserIdByEmail(userEmail: string) {
 

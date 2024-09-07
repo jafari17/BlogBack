@@ -6,6 +6,7 @@ import { CreateComponent } from '../posts/create/create.component';
 import { EditComponent } from '../posts/edit/edit.component';
 import { homeCategoriesComponent } from '../categories/home-categories/home-categories.component';
 import { CategoriesCreateComponent } from '../categories/categories-create/categories-create.component';
+import { HomeImageComponent } from '../images/home-image/home-image.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: 'categories/create',
         component: CategoriesCreateComponent,
+      },
+      {
+        path: 'posts/Image/:uuid',
+        component: HomeImageComponent ,
       },
 
     ]

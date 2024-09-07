@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuillModule } from "ngx-quill";
 import { homeCategoriesComponent } from '../categories/home-categories/home-categories.component';
 import { CategoriesCreateComponent } from '../categories/categories-create/categories-create.component';
+import { HomeImageComponent } from '../images/home-image/home-image.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { CategoriesCreateComponent } from '../categories/categories-create/categ
     EditComponent,
     homeCategoriesComponent,
     CategoriesCreateComponent,
+    HomeImageComponent,
   ],
   imports: [
     CommonModule,

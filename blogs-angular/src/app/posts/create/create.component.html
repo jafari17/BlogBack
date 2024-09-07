@@ -55,7 +55,7 @@ class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-
                 </div>  -->
 
                 <div dir="ltr" lang="en" class="sm:col-span-2">
-                <quill-editor id="txtDescription" name="description"  [(ngModel)] = "postForm.description" [styles]="{height: '300px'}"  ></quill-editor>
+                <quill-editor   (onEditorCreated)="getEditorInstance($event)"         id="txtDescription" name="description"  [(ngModel)] = "postForm.description" [styles]="{height: '300px'}"  ></quill-editor>
              
               </div> 
             </div>

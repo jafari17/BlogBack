@@ -17,6 +17,9 @@ namespace BlogBack.Application.Contracts
         Task UpdatePostAsync(Post post);
         Task DeletePostByIdAsync(int id);
 
+        Task<IEnumerable<Post>> GetListPostDirectorytAsync();
+        Task<IEnumerable<string>> GetListUrlImageByPostDirectoryAsync(string postDirectory);
+         
         void removeAllPost();
         Task SaveChangesAsync();
     }

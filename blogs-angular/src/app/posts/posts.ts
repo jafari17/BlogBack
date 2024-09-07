@@ -8,6 +8,7 @@ export interface Posts {
     labels?: Labels[];
     description:string;
     active?:boolean;
+    postDirectory:string;
 }
 export interface Labels {
     labelName:string;

@@ -51,9 +51,9 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of allPosts let i=index" class="border-b dark:border-gray-700">
-                            <th scope="row"  class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ i + 1 }}</th>
-                            <td class="px-4 py-3 ltr:ml-3 rtl:mr-3">{{ item.title }}</td>
-                            <td class="px-4 py-3 ltr:ml-3 rtl:mr-3">{{ item.categoryTitle }}</td>
+                            <th scope="row"  class="px-3 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ i + 1 }}</th>
+                            <td class="px-4 py-3 ltr:ml-2 rtl:mr-2 "   >{{ item.title }}</td>
+                            <td class="px-4 py-3 ltr:ml-2 rtl:mr-2">{{ item.categoryTitle }}</td>
                             <td class=" px-4 py-3 ltr:ml-3 rtl:mr-3"  >
                               <p  class="overflow-hidden truncate w-2"      style="display:inline-block;height:3ch; width:40ch; overflow: hidden;white-space: nowrap; text-overflow: ellipsis;" [innerHTML]=" item.description" ></p>
 
@@ -79,6 +79,10 @@
 
                             <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2  me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                               <a class="btn btn-primary" [routerLink]="['/posts/edit', item.postId]">ویرایش</a>
+                            </button>
+
+                            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2  me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                              <a class="btn btn-primary" [routerLink]="['/posts/Image', item.postDirectory]">عکس</a>
                             </button>
 
                             <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2  me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">

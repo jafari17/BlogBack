@@ -28,10 +28,14 @@ export class HomePagesComponent implements OnInit  {
    
   getPosts(id: string) {
     console.log("getPosts()")
-    this.postService.getByCategory(id).subscribe((data) => {
-      
+    this.postService.get().subscribe((data) => {
+
+      console.log("data")
+      console.log(data)
+
       this.allPosts = data;
       this.allPostsSave = data;
+      
 
      });
   } 

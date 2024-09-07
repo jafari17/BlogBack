@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlogBack.API.Controllers
 {
-    [Authorize]
+    
     [ApiController]
     [Route("api/[controller]/[action]")]
     public class CategoryController : Controller
@@ -22,7 +22,7 @@ namespace BlogBack.API.Controllers
             _mediator = mediator;
         }
 
-
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> AddCategory(string TitleCategory, string? DescriptionCategory )
         {
@@ -39,7 +39,7 @@ namespace BlogBack.API.Controllers
             var response = await _mediator.Send(command);
             return Ok();
         }
-
+        [Authorize]
         [HttpDelete]
         public async Task<IActionResult> DeleteCategory(int id)
         {

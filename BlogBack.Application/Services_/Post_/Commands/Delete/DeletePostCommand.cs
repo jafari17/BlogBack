@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlogBack.Application.Services_.Post_.Commands.Delete
 {
-    public class DeletePostCommand : IRequest<bool>
+    public class DeletePostCommand : IRequest<string>
     {
         public int PostId { get; set; }
     }

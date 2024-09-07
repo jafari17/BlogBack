@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogBack.Infrastructure.Migrations
 {
     [DbContext(typeof(BlogBackDbContexts))]
-    [Migration("20240827160037_init")]
-    partial class init
+    [Migration("20240902083112_int")]
+    partial class @int
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,6 +71,10 @@ namespace BlogBack.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PostDirectory")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

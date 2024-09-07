@@ -4,14 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { homeCategoriesComponent } from './home-categories/home-categories.component';
 
 const routes: Routes = [
-  {
-    path: 'categories/home',
-    component: homeCategoriesComponent,
-  },
-  {
-    path: 'categories/create',
-    component: CategoriesCreateComponent,
-  },
+  // {
+  //   path: 'categories/home',
+  //   component: homeCategoriesComponent,
+  // },
+  // {
+  //   path: 'categories/create',
+  //   component: CategoriesCreateComponent,
+  // },
 ];
 
 @NgModule({
