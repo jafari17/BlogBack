@@ -76,7 +76,7 @@ app.MapIdentityApi<IdentityUser>();
 
 app.UseStaticFiles();
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.UseCors();
 

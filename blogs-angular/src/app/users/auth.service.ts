@@ -3,42 +3,43 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { UserLogin } from './userLogin';
 import { UserRegister } from './userRegister';
+import { ConfigService } from '../config.service';
  
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private configService: ConfigService) {}
 
   public register(user: UserRegister): Observable<any> {
     return this.http.post<any>(
-      'https://localhost:8081/register',user);
+      this.configService.domain +'register',user);
   }
 
   public login(userLogin: UserLogin): Observable<any> {
-    return this.http.post<any>('https://localhost:8081/login', userLogin );
+    return this.http.post<any>(this.configService.domain +'login', userLogin );
   }
 
   public getMe(): Observable<string> {
-    return this.http.get('https://localhost:8081/api/Auth', {
+    return this.http.get(this.configService.domain +'api/Auth', {
       responseType: 'text',
     });
   }
 
   public getWeather(): Observable<string> {
-    return this.http.get('https://localhost:8081/WeatherForecast', {
+    return this.http.get(this.configService.domain +'WeatherForecast', {
       responseType: 'text',
     });
   }
   public getUserIdByEmail(userEmail: string)  {
-    return this.http.get(`https://localhost:8081/api/UserManager/GetUserIdByEmail?userEmail=${userEmail}`,{
+    return this.http.get(this.configService.domain +`api/UserManager/GetUserIdByEmail?userEmail=${userEmail}`,{
       responseType: 'text',
     });    
   }
 
   public checkingLogin(): Observable<string> {
-    return this.http.get('https://localhost:8081/api/UserManager/CheckingLogin', {
+    return this.http.get(this.configService.domain +'api/UserManager/CheckingLogin', {
       responseType: 'text',
     });
   }
