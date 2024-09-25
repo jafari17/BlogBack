@@ -16,6 +16,11 @@ namespace BlogBack.API.Controllers
         [HttpGet("GetImage")]
         public async Task<string> GetPost(string randomUUID, string Filename)
         {
+            Console.WriteLine("=====");
+            Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine("GetPost(string randomUUID, string Filename)");
+            Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine("=====");
             var r = GetImagebyProduct(randomUUID,Filename);
 
             if (r != null)
@@ -29,6 +34,11 @@ namespace BlogBack.API.Controllers
         [HttpPost("UploadImage")]
         public async Task<IActionResult> UploadImage()
         {
+            Console.WriteLine("=====");
+            Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine("UploadImage()");
+            Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine("=====");
             string Results = "falseeeeeee";
             try
             {
@@ -79,6 +89,11 @@ namespace BlogBack.API.Controllers
         [HttpGet("GetListImage")]
         public async Task<IActionResult> GetListUrlImageByPostDirectory(string postDirectory)
         {
+            Console.WriteLine("=====");
+            Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine("GetListUrlImageByPostDirectory");
+            Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine("=====");
             string Filepath = GetFilePath(postDirectory);
             List<string> listImage = new List<string>();
 
@@ -112,20 +127,27 @@ namespace BlogBack.API.Controllers
         [NonAction]
         private string GetFilePath(string randomUUID)
         {
-            return this._environment.WebRootPath + "\\Uploads\\Product\\" + randomUUID;
+            Console.WriteLine("=====");
+            Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine("GetFilePath(string randomUUID)");
+            Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine("=====");
+            //return this._environment.WebRootPath + "\\Uploads\\Product\\" + randomUUID;
+            return this._environment.WebRootPath + "\\" + randomUUID;
         }
 
-        //[NonAction]
-        //private string GetFilePath()
-        //{
-        //    return this._environment.WebRootPath + "\\Uploads\\Product\\";
-        //}
+ 
 
         [NonAction]
         private string GetImagebyProduct(string randomUUID ,string Filename)
         {
+            Console.WriteLine("=====");
+            Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine("GetImagebyProduct(string randomUUID ,string Filename)");
+            Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine("=====");
             string ImageUrl = string.Empty;
-            string HostUrl = "https://localhost:8081/";
+            string HostUrl = "http://localhost:8080/";
             string Filepath = GetFilePath(randomUUID);
             string Imagepath = Filepath + $"\\{Filename}";
             if (!System.IO.File.Exists(Imagepath))
@@ -134,7 +156,8 @@ namespace BlogBack.API.Controllers
             }
             else
             {
-                ImageUrl = HostUrl + "/uploads/Product/"+ randomUUID + $"/{Filename}";
+                //ImageUrl = HostUrl + "/uploads/Product/"+ randomUUID + $"/{Filename}";
+                ImageUrl = HostUrl + "/"+ randomUUID + $"/{Filename}";
             }
             return ImageUrl;
 

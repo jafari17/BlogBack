@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using BlogBack.Infrastructure.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,7 +61,7 @@ builder.Services.AddCors(options =>
         });
 });
 
-
+ 
 
 
 
@@ -97,3 +100,5 @@ static void Migrate(WebApplication app)
         context.Database.Migrate();
     }
 }
+
+ 

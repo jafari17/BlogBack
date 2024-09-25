@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 services:
   blogback.api:
@@ -8,8 +8,9 @@ services:
       dockerfile: BlogBack.API/Dockerfile
     ports:
       - "8080:8080"
-      - "8081:8081" 
-
+      # - "8081:8081"  
+    volumes:
+      - "C:/apps/uploads:/app/wwwroot"
 
   blogs:
     build: ./blogs-angular
@@ -20,4 +21,6 @@ services:
         ng serve --host 0.0.0.0 
       '
 
-
+volumes:
+  wwwroot:
+    driver: local
