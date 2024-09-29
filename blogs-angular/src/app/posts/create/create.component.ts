@@ -29,7 +29,9 @@ export class CreateComponent implements OnInit {
     labels: [],
     active:true,
     categoryId:0,
-    userId:''
+    userId:'',
+    postDate:new Date('0000-00-00T00:00:00')
+
 
   };
   public labels: Labels = {

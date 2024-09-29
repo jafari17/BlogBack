@@ -20,7 +20,9 @@ export class EditComponent implements OnInit {
     description: '',
     labels: [],
     categoryId:0,
-    userId:''
+    userId:'',
+    postDate:new Date('0000-00-00T00:00:00')
+
 
   };
   labels: Labels = {

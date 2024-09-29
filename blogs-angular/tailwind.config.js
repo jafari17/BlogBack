@@ -12,6 +12,7 @@ module.exports = {
     },
     fontFamily: {
       'body': [
+        'Vazirmatn',
     'Inter', 
     'ui-sans-serif', 
     'system-ui', 

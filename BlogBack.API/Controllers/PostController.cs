@@ -1,10 +1,10 @@
 ﻿using BlogBack.Application.Contracts;
-using BlogBack.Application.Services_.Post_.Commands.Create;
-using BlogBack.Application.Services_.Post_.Commands.Delete;
-using BlogBack.Application.Services_.Post_.Commands.Update;
-using BlogBack.Application.Services_.Post_.Queries.GetListPostByUserId;
-using BlogBack.Application.Services_.Post_.Queries.GetPost;
-using BlogBack.Application.Services_.Post_.Queries.GetPostById;
+using BlogBack.Application._Services._Post.Commands.Create;
+using BlogBack.Application._Services._Post.Commands.Delete;
+using BlogBack.Application._Services._Post.Commands.Update;
+using BlogBack.Application._Services._Post.Queries.GetListPostByUserId;
+using BlogBack.Application._Services._Post.Queries.GetPost;
+using BlogBack.Application._Services._Post.Queries.GetPostById;
 using BlogBack.Application.ViewModels;
 using BlogBack.Domain;
 using BlogBack.Infrastructure.Repositories;
@@ -36,7 +36,7 @@ namespace BlogBack.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPost(PostDto postdto)
         {
-
+            postdto.PostDate = DateTime.Now;
             var command = new CreatePostCommand()
             {
                 PostDto = postdto,
@@ -61,6 +61,7 @@ namespace BlogBack.API.Controllers
             var response = await _mediator.Send(query);
             return Ok(response);
         }
+
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetListPostByUserIdAsync(string id)

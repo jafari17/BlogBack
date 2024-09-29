@@ -38,6 +38,12 @@ export class AuthService {
     });    
   }
 
+  public getEmailByUserId(idUser: string)  {
+    return this.http.get(this.configService.domain +`api/UserManager/GetUserEmailById?idUser=${idUser}`,{
+      responseType: 'text',
+    });    
+  }
+
   public checkingLogin(): Observable<string> {
     return this.http.get(this.configService.domain +'api/UserManager/CheckingLogin', {
       responseType: 'text',

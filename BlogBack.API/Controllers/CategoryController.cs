@@ -1,8 +1,8 @@
-﻿using BlogBack.Application.Services_.Category_.Commands.Create;
-using BlogBack.Application.Services_.Category_.Commands.Delete;
-using BlogBack.Application.Services_.Category_.Queries.GetCategory;
-using BlogBack.Application.Services_.Post_.Commands.Create;
-using BlogBack.Application.Services_.Post_.Queries.GetPost;
+﻿using BlogBack.Application._Services._Category.Commands.Create;
+using BlogBack.Application._Services._Category.Commands.Delete;
+using BlogBack.Application._Services._Category.Queries.GetCategory;
+using BlogBack.Application._Services._Post.Commands.Create;
+using BlogBack.Application._Services._Post.Queries.GetPost;
 using BlogBack.Application.ViewModels;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

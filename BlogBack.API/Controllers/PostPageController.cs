@@ -1,6 +1,6 @@
 ﻿using BlogBack.Application.Contracts;
-using BlogBack.Application.Services_.Post_.Queries.GetPost;
-using BlogBack.Application.Services_.Post_.Queries.GetPostById;
+using BlogBack.Application._Services._Post.Queries.GetPost;
+using BlogBack.Application._Services._Post.Queries.GetPostById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

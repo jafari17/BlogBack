@@ -9,6 +9,7 @@ export interface Posts {
     description:string;
     active?:boolean;
     postDirectory:string;
+    postDate:Date;
 }
 export interface Labels {
     labelName:string;

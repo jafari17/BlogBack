@@ -10,13 +10,9 @@ namespace BlogBack.Application.Contracts
     public interface ICategoryRepository
     {
         Task<IEnumerable<Category>> GetListCategoryAsync();
-
-
         Task AddCategoryAsync(Category category);
-
         Task<Category> CategoryByIdAsync(int id);
         Task DeleteByIdAsync(int id);
-
         void RemoveAllCategory();
         Task SaveChangesAsync();
     }

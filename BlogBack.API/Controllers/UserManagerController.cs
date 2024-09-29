@@ -26,6 +26,21 @@ namespace BlogBack.API.Controllers
             return Ok(user.Id);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetUserEmailById(string idUser)
+        {
+            //var user = await _userManager.FindByIdAsync( ); 
+            var user = await _userManager.FindByIdAsync(idUser);
+
+            if (user == null) { return Ok(); };
+            return Ok(user.Email);
+        }
+
+
+
+
+
+
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> CheckingLogin()

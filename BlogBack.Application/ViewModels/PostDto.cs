@@ -15,6 +15,8 @@ namespace BlogBack.Application.ViewModels
         public string Title { get; set; }
         public string? UserId { get; set; }
 
+        public string? Email { get; set; }
+
         public ICollection<LabelDto>? Labels { get; set; }
         public string? Description { get; set; }
         public bool? Active { get; set; }
@@ -22,6 +24,9 @@ namespace BlogBack.Application.ViewModels
 
         public string? CategoryTitle { get; set; }
         public string PostDirectory { get; set; }
+
+        public DateTime? PostDate { get; set; }
+
 
     }
 
