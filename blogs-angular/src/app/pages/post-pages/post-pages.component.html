@@ -16,14 +16,10 @@
                         </div>
                     </div>
                 </address>
-
-
-
                 <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{{postForm.title}}</h1>
             </header>
-            
              
-            <div [innerHTML]=" postForm.description">  </div>
+            <div class="leading-relaxed" [innerHTML]=" postForm.description">  </div>
             
             <div class="flex">
                 <div *ngFor="let labels of postForm.labels"   class="py-2 px-1 ">
