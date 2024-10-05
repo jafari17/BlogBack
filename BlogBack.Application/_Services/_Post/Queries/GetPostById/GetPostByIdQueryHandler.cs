@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlogBack.Domain;
+using Microsoft.AspNetCore.Identity;
 
 namespace BlogBack.Application._Services._Post.Queries.GetPostById
 {

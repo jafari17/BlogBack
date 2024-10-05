@@ -8,33 +8,42 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
- 
+
 namespace BlogBack.Infrastructure.DbContexts
 {
-    public class BlogBackDbContexts : IdentityDbContext
+    public class BlogBackDbContexts : IdentityDbContext<ApplicationUser>
     {
-        public BlogBackDbContexts()
+        //public BlogBackDbContexts()
+        //{
+        //}
+
+        //public BlogBackDbContexts
+        //   (DbContextOptions<BlogBackDbContexts> options)
+        //   : base(options)
+        //{
+
+        //}
+
+        public BlogBackDbContexts(DbContextOptions<BlogBackDbContexts> options)
+    : base(options)
         {
         }
 
-        public BlogBackDbContexts
-           (DbContextOptions<BlogBackDbContexts> options)
-           : base(options)
-        {
 
-        }
+
 
         public virtual DbSet<Post> Post { get; set; } = null!;
         public virtual DbSet<Category> Category { get; set; } = null!;
         public virtual DbSet<Label> Label { get; set; } = null!;
+
+        //public virtual DbSet<UserBlog> UserBlog { get; set; } = null!;
+
 
 
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
-
             base.OnModelCreating(modelBuilder);
 
             ConfigPost(modelBuilder);
@@ -47,6 +56,11 @@ namespace BlogBack.Infrastructure.DbContexts
             modelBuilder.Entity<Category>().HasKey(t => t.CategoryId);
 
             modelBuilder.Entity<Label>().HasKey(t => t.LabelId);
+
+            modelBuilder.Entity<ApplicationUser>()
+                            .HasMany(c => c.Posts)
+                            .WithOne(p => p.AppUser)
+                            .HasForeignKey(p => p.UserId);
 
 
 

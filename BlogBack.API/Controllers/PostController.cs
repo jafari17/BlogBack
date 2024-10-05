@@ -37,9 +37,11 @@ namespace BlogBack.API.Controllers
         public async Task<IActionResult> AddPost(PostDto postdto)
         {
             postdto.PostDate = DateTime.Now;
+            //postdto.UserId = "8c093975-f85a-4905-8207-f6b8bf49f0a1";
             var command = new CreatePostCommand()
             {
                 PostDto = postdto,
+                 
             };
             var response = await _mediator.Send(command);
             return Ok();

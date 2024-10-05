@@ -20,8 +20,7 @@ namespace BlogBack.Infrastructure.Repositories
         }
         public async Task AddPostAsync(Post post)
         {
-            await _context.Post.AddAsync(post);
-
+            var p =  await _context.Post.AddAsync(post);
         }
 
         public async Task DeletePostByIdAsync(int id)
@@ -38,7 +37,8 @@ namespace BlogBack.Infrastructure.Repositories
 
         public async Task<IEnumerable<Post>> GetListPostByUserIdAsync(string userId)
         {
-           var x = await _context.Post.Include(l => l.Labels).Where(u => u.UserId == userId).ToListAsync();
+            var x = await _context.Post.Include(l => l.Labels).Where(u => u.UserId == userId).ToListAsync();
+            //var x = await _context.Post.Include(l => l.Labels).ToListAsync();
             return x;
         }
 

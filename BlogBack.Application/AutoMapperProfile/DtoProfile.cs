@@ -23,6 +23,7 @@ namespace BlogBack.Application.AutoMapperProfile
             CreateMap<Post, PostDto>()
                 //.ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.Category.CategoryId))
                 //.ForMember(dest => dest.CategoryTitle, opt => opt.MapFrom(src => src.Category.TitleCategory))
+
                 .ForMember(dest => dest.Labels, opt => opt.MapFrom(src => src.Labels));
 
             CreateMap<CategoryDto, CategoryDto>();
@@ -31,6 +32,11 @@ namespace BlogBack.Application.AutoMapperProfile
             CreateMap<Label , LabelDto>();
             CreateMap<LabelDto, Label>();
             //.ForMember(dest => dest.LabelName, opt => opt.MapFrom(src => src.LabelName));
+
+
+
+
+
 
         }
     }

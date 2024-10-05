@@ -11,6 +11,6 @@ namespace BlogBack.Domain
         public int LabelId { get; set; }
         public string LabelName { get; set; } 
          public int PostId { get; set; }
-         public virtual Post Post { get; set; }
+        public virtual Post Post { get; set; }
     }
 }

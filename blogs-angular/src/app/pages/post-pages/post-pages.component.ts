@@ -46,12 +46,7 @@ export class PostPagesComponent implements OnInit   {
 
       console.log(this.postForm.postDate)
 
-
-
-
     });
-
-  
 
   }
    
@@ -59,7 +54,7 @@ export class PostPagesComponent implements OnInit   {
     this.postService.getById(id).subscribe((data) => {
       this.postForm = data;
 
-      this.getEmailByUserId(this.postForm.userId)
+      this.getUserFullNameById(this.postForm.userId)
 
       this.dateJalali = moment(this.postForm.postDate, 'YYYY/MM/DD').locale('fa').format('YYYY/M/D');
       
@@ -68,8 +63,8 @@ export class PostPagesComponent implements OnInit   {
      });
   }
   
-  getEmailByUserId(userId: string) {
-    this.authService.getEmailByUserId(userId).subscribe((data) => {
+  getUserFullNameById(userId: string) {
+    this.authService.getUserFullNameById(userId).subscribe((data) => {
       this.userName = data;
       console.log(this.userName)
 

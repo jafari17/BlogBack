@@ -12,10 +12,19 @@ import { ConfigService } from '../config.service';
 export class AuthService {
   constructor(private http: HttpClient, private configService: ConfigService) {}
 
-  public register(user: UserRegister): Observable<any> {
-    return this.http.post<any>(
-      this.configService.domain +'register',user);
+  // public register(user: UserRegister): Observable<any> {
+  //   return this.http.post<any>(
+  //     this.configService.domain +'register',user);
+  // }
+
+  public register(user: UserRegister) {
+    return this.http.get(
+      this.configService.domain +`api/UserManager/Register?email=${user.email}&password=${user.password}&fullName=${user.fullName}`,{
+        responseType: 'text',
+      });
   }
+
+
 
   public login(userLogin: UserLogin): Observable<any> {
     return this.http.post<any>(this.configService.domain +'login', userLogin );
@@ -43,6 +52,15 @@ export class AuthService {
       responseType: 'text',
     });    
   }
+  
+  public getUserFullNameById(idUser: string)  {
+    return this.http.get(this.configService.domain +`api/UserManager/GetUserFullNameById?idUser=${idUser}`,{
+      responseType: 'text',
+    });    
+  }
+
+
+
 
   public checkingLogin(): Observable<string> {
     return this.http.get(this.configService.domain +'api/UserManager/CheckingLogin', {

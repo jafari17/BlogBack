@@ -3,6 +3,7 @@ using BlogBack.Application.Contracts;
 using BlogBack.Application.ViewModels;
 using BlogBack.Domain;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace BlogBack.Application._Services._Post.Commands.Create
         private readonly ICategoryRepository _categoryRepository;
         //private readonly ILabelRepository _labelRepository;
 
+        private readonly UserManager<ApplicationUser> _userManager;
 
 
         public CreatePostCommandHandler( IMapper mapper, IPostRepository candlestickRepository, ICategoryRepository categoryRepository)
@@ -34,7 +36,7 @@ namespace BlogBack.Application._Services._Post.Commands.Create
             //    LabelName = request.LabelName,
             //};
             //var label = _mapper.Map<Label>(labelDto);
-            
+
             //await _labelRepository.AddLabelAsync(label);
 
 
@@ -49,6 +51,7 @@ namespace BlogBack.Application._Services._Post.Commands.Create
 
             //    //CategoryId =  request.CategoryId,
             //};
+ 
 
             var Post = _mapper.Map<Post>(request.PostDto);
             await _postRepository.AddPostAsync(Post);
