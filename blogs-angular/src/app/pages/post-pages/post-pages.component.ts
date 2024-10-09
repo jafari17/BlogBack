@@ -67,8 +67,6 @@ export class PostPagesComponent implements OnInit   {
     this.authService.getUserFullNameById(userId).subscribe((data) => {
       this.userName = data;
       console.log(this.userName)
-
-
      });
   }
 }

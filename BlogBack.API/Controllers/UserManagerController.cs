@@ -63,9 +63,7 @@ namespace BlogBack.API.Controllers
             if (uz == null) { return Ok(); };
             return Ok(uz);
         }
-
- 
-
+         
 
         [HttpGet]
         public async Task<IActionResult> Register(string email, string password, string fullName)
@@ -81,9 +79,7 @@ namespace BlogBack.API.Controllers
             if (userResult == null) { return Ok(); };
             return Ok(userResult);
         }
-        
-
-
+         
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> CheckingLogin()
